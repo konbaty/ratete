@@ -1,0 +1,154 @@
+----------------Ajoutez des routes pour la gestion des produits
+le code se trouve en bas dans ex1 
+et les detaille sont plus bas dans ext2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------ex1
+from flask import Flask, render_template, request, redirect, url_for
+import sqlite3
+
+app = Flask(__name__)
+
+@app.route('/produits')
+def liste_produits():
+    conn = sqlite3.connect('boutique.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM produits')
+    produits = cursor.fetchall()
+    conn.close()
+    return render_template('produits.html', produits=produits)
+
+@app.route('/ajouter_produit', methods=['GET', 'POST'])
+def ajouter_produit():
+    if request.method == 'POST':
+        nom = request.form['nom']
+        description = request.form['description']
+        prix = request.form['prix']
+        quantite = request.form['quantite']
+        conn = sqlite3.connect('boutique.db')
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO produits (nom, description, prix, quantite) VALUES (?, ?, ?, ?)', (nom, description, prix, quantite))
+        conn.commit()
+        conn.close()
+        return redirect(url_for('liste_produits'))
+    return render_template('ajouter_produit.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------ex2
+voici une explication plus détaillée de ce que signifie "ajouter des routes pour la gestion des produits" dans le contexte de développement web avec Python et Flask :
+
+Lorsque nous parlons de "routes", nous faisons référence aux URL qui sont associées à des fonctionnalités spécifiques dans votre application web. Ces routes permettent aux utilisateurs d'accéder à différentes pages et fonctionnalités de votre site. Dans le contexte d'une boutique en ligne de type dropshipping, vous auriez généralement besoin des routes suivantes :
+
+Page d'accueil : Une route pour afficher la page d'accueil de votre boutique, qui répertorie les produits ou offre des informations sur votre entreprise. Par exemple :
+
+python
+Copy code
+@app.route('/')
+def home():
+    # Code pour afficher la page d'accueil
+    return render_template('home.html')
+Liste des produits : Une route pour afficher la liste de tous les produits disponibles dans votre boutique. Vous pouvez également inclure des filtres pour trier les produits par catégorie, prix, etc. Par exemple :
+
+python
+Copy code
+@app.route('/products')
+def products():
+    # Code pour récupérer la liste des produits depuis la base de données
+    return render_template('products.html', products=product_list)
+Détails du produit : Une route pour afficher les détails d'un produit spécifique lorsqu'un utilisateur clique sur un produit. Par exemple :
+
+python
+Copy code
+@app.route('/product/<int:product_id>')
+def product_details(product_id):
+    # Code pour récupérer les détails du produit depuis la base de données
+    return render_template('product_details.html', product=product_details)
+Ajouter un nouveau produit : Une route permettant aux administrateurs de votre site d'ajouter de nouveaux produits à votre boutique. Vous devrez généralement protéger cette route pour qu'elle ne soit accessible que par les utilisateurs autorisés.
+
+python
+Copy code
+@app.route('/add_product', methods=['GET', 'POST'])
+def add_product():
+    if request.method == 'POST':
+        # Code pour traiter les données du nouveau produit et les enregistrer dans la base de données
+        return redirect(url_for('products'))  # Redirige vers la liste des produits après l'ajout
+    return render_template('add_product.html')
+Modifier un produit : Une route pour permettre aux administrateurs de mettre à jour les informations d'un produit existant. Encore une fois, cette route doit être sécurisée.
+
+python
+Copy code
+@app.route('/edit_product/<int:product_id>', methods=['GET', 'POST'])
+def edit_product(product_id):
+    # Code pour récupérer les informations du produit à modifier depuis la base de données
+    if request.method == 'POST':
+        # Code pour mettre à jour les informations du produit
+        return redirect(url_for('products'))  # Redirige vers la liste des produits après la modification
+    return render_template('edit_product.html', product=product_details)
+Supprimer un produit : Une route pour permettre aux administrateurs de supprimer un produit.
+
+python
+Copy code
+@app.route('/delete_product/<int:product_id>')
+def delete_product(product_id):
+    # Code pour supprimer le produit de la base de données
+    return redirect(url_for('products'))  # Redirige vers la liste des produits après la suppression
+Ces exemples de routes vous montrent comment définir les URL qui sont associées à des fonctionnalités spécifiques dans votre application Flask. Vous devrez bien sûr adapter ces exemples en fonction des besoins particuliers de votre boutique en ligne. Les templates HTML (render_template) sont utilisés pour générer les pages HTML qui seront affichées aux utilisateurs. Vous devrez également mettre en œuvre la logique métier nécessaire pour gérer les produits dans votre base de données.

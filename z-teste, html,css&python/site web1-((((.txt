@@ -1,0 +1,3 @@
+Ce code utilise Flask pour créer un site web simple. Vous devez créer un dossier "templates" et placer le fichier HTML (index.html) à l'intérieur. Assurez-vous que Flask est installé sur votre système.
+
+Cela ne couvre qu'une petite partie de ce qu'implique la création d'une boutique de dropshipping en ligne. Pour une boutique en ligne fonctionnelle, vous devrez ajouter des fonctionnalités de gestion des produits, de gestion des commandes, d'authentification, de paiement, etc. Ce serait un projet beaucoup plus complexe, et vous pourriez envisager d'utiliser un CMS ou un framework e-commerce existant pour gagner du temps et de la sécurité.

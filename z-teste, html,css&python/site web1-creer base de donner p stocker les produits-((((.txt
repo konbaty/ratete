@@ -1,0 +1,54 @@
+
+1. Créez une base de données :
+
+Pour stocker les informations sur les produits, vous pouvez utiliser SQLite, qui est une base de données légère et facile à intégrer avec Flask. Vous devrez installer SQLite si ce n'est pas déjà fait.
+
+
+
+
+
+
+         Pour vérifier si SQLite est installé sur votre système
+Ouvrez votre invite de commandes (cmd) ou PowerShell.
+
+Tapez la commande suivante et appuyez sur Entrée :
+
+sqlite3 --version
+Vous verrez la version de SQLite s'afficher à l'écran si SQLite est installé. Sinon, vous obtiendrez un message d'erreur.
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
