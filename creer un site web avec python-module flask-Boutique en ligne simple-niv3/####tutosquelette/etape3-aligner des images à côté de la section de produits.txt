@@ -1,0 +1,143 @@
+Il semble y avoir quelques éléments dans votre code, mais ils ne sont pas bien organisés. 
+Pour aligner des images à côté de la section de produits, vous pouvez placer les éléments dans la même structure HTML et utiliser des règles CSS pour les aligner correctement. Voici un exemple de structure pour aligner des images à côté de la section de produits :
+
+
+
+
+
+                avant
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+    <title>Votre titre</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tasoeur-pr-25oct2023.css') }}">
+
+
+
+<body>
+    <header>
+        <h1>Accueil</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</li>
+                <li><a href="/357magnum">357magnum</a></li>
+                <li><a href="/fusil a pompe">fusil a pompe</a></li>
+                <li><a href="/ak 47">ak 47</a></li>
+                <li><a href="/contact">contact</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='products/357.png') }}" alt="Product 1">
+    <!-- Autres contenus... -->
+</body>
+</html>
+
+
+
+  <main>
+    <section class="produits">
+      <article class="produit">
+        <img src="lien_de_l_image.jpg" alt="Nom du produit">
+        <h2>Nom du Produit</h2>
+        <p>Description du produit.</p>
+        <span>Prix : 19.99€</span>
+        <button>Acheter</button>
+      </article>
+      <!-- Répéter cet article pour chaque produit -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy;       Ma Boutique en Ligne</p>
+  </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                apres
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Votre titre</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tasoeur-pr-25oct2023.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Accueil</h1>
+        <nav>
+            <ul>
+                <!-- Vos liens de navigation -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="produits">
+            <article class="produit">
+                <img src="lien_de_l_image.jpg" alt="Nom du produit">
+                <h2>Nom du Produit</h2>
+                <p>Description du produit.</p>
+                <span>Prix : 19.99€</span>
+                <button>Acheter</button>
+            </article>
+            <!-- Répéter cet article pour chaque produit -->
+
+            <!-- Ajouter une image alignée à côté des produits -->
+            <img src="{{ url_for('static', filename='products/357.png') }}" alt="Product 1">
+            <!-- Autres images alignées à côté des produits -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Ma Boutique en Ligne</p>
+    </footer>
+</body>
+</html>
+

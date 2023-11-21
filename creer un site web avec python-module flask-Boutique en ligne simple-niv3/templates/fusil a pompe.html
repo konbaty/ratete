@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Votre titre</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tasoeur-pr-25oct2023.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Accueil</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/357magnum">357magnum</a></li>
+                <li><a href="/fusil a pompe">fusil a pompe</a></li>
+                <li><a href="/ak 47">ak 47</a></li>
+                <li><a href="/contact">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Ajouter une image alignée à côté de la section des produits -->
+        <img src="{{ url_for('static', filename='products/pomp.png') }}" alt="Product 1">
+        <!-- Autres images alignées à côté des produits -->
+
+        <section class="produits">
+            <article class="produit">
+                <img src="lien_de_l_image.jpg" alt="Nom du produit">
+                <h2>Nom du Produit</h2>
+                <p>Description du produit.</p>
+                <span>Prix : 19.99€</span>
+                <button>Acheter</button>
+            </article>
+            <!-- Répéter cet article pour chaque produit -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Ma Boutique en Ligne</p>
+    </footer>
+</body>
+</html>

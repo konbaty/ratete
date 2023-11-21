@@ -1,0 +1,313 @@
+-------------------------moi1
+place limage de couverture et les image des produit dans se code 
+
+
+"from flask import Flask, render_template
+
+
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/357magnum')
+def products():
+    return render_template('357magnum.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+    
+@app.route('/ak 47')
+def payment():
+    return render_template('ak 47.html')
+    
+@app.route('/fusil a pompe')
+def index():
+    return render_template('fusil a pompe.html')
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+@app.route('/process_payment', methods=['POST'])
+def process_payment():
+    if request.method == 'POST':
+        # Récupération des données du formulaire
+        card_number = request.form['card_number']
+        expiration = request.form['expiration']
+        cvv = request.form['cvv']
+        name = request.form['name']
+        
+        # Logique pour traiter le paiement
+        # Ici, vous pouvez intégrer la logique de traitement du paiement
+        # Par exemple, une intégration à une passerelle de paiement
+        
+        return "Paiement effectué avec succès!"
+    else:
+        return "Méthode non autorisée."
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------ChatGPT1
+Pour inclure des images dans votre application Flask, vous pouvez utiliser le dossier static pour stocker les images de produit et l'image de couverture. Ensuite, référencez ces images dans vos fichiers HTML à l'aide de balises <img>.
+
+Modifiez votre structure de fichiers pour ressembler à ceci :
+
+Structure des fichiers :
+
+
+
+
+project_folder/
+│
+├── app.py
+│
+├── static/
+│   ├── ars.jpg   <-- Image de couverture
+│   └── products/
+│       ├── product1.jpg
+│       ├── product2.jpg
+│       └── ...           <-- Autres images de produits
+│
+└── templates/
+    ├── index.html
+    ├── 357magnum.html
+    ├── contact.html
+    ├── ak 47.html
+    └── fusil a pompe.html
+    
+    
+    
+    
+Code Python pour l'application Flask (app.py) :
+
+
+
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/357magnum')
+def products():
+    return render_template('357magnum.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+    
+@app.route('/ak 47')
+def payment():
+    return render_template('ak 47.html')
+    
+@app.route('/fusil a pompe')
+def index():
+    return render_template('fusil a pompe.html')
+
+@app.route('/process_payment', methods=['POST'])
+def process_payment():
+    # Logique de traitement de paiement...
+    pass
+
+if __name__ == '__main__':
+    app.run(debug=True)
+    
+    
+    
+    
+    
+    
+    
+    
+Exemple d'utilisation de l'image de couverture dans index.html :
+
+
+
+         avant
+         
+         
+         
+         
+         
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+    <title>Votre titre</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tasoeur-pr-25oct2023.css') }}">
+</head>
+
+
+
+
+
+
+
+
+
+<body>
+    <header>
+        <h1>Accueil</h1>
+        <nav>
+            <ul>
+                <li><a href="/">357magnum</a></li>
+                <li><a href="/fusil a pompe">fusil a pompe</a></li>
+                <li><a href="/ak 47>ak 47</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+
+
+    
+    
+    
+    
+  <footer>
+    <li><a href="/contact">Contact</a></li>
+    <p>&copy; 2023 Ma Boutique en Ligne</p>
+  </footer>
+</body>
+</html>
+
+
+
+
+                      apres
+                      
+                      
+                      
+                      
+                      
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+    <title>Votre titre</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tasoeur-pr-25oct2023.css') }}">
+</head>
+
+
+
+
+
+
+
+
+
+<body>
+    <header>
+        <h1>Accueil</h1>
+        <nav>
+            <ul>
+                <li><a href="/">357magnum</a></li>
+                <li><a href="/fusil a pompe">fusil a pompe</a></li>
+                <li><a href="/ak 47>ak 47</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+
+
+    
+    
+    
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+    <title>Votre titre</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tasoeur-pr-25oct2023.css') }}">
+    
+</head>
+    <title>Cover Page</title>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='ars.jpg') }}" alt="Cover Image">
+    <!-- Autres contenus... -->
+</body>
+</html>
+
+    
+    
+    
+ 
+    
+    
+    
+    
+  <footer>
+    <li><a href="/contact">Contact</a></li>
+    <p>&copy; 2023 Ma Boutique en Ligne</p>
+  </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Exemple d'utilisation des images de produits dans 357magnum.html (à adapter pour chaque page) :
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='products/product1.jpg') }}" alt="Product 1">
+    <!-- Autres contenus... -->
+</body>
+</html>
+
+
+
+
+
+Assurez-vous que le chemin spécifié dans url_for correspond au bon chemin où se trouvent vos images dans le dossier static. Ces exemples montrent comment inclure des images dans vos pages HTML en utilisant Flask et Jinja pour générer les chemins vers ces images.
+
+
+
+
+-----------------------probleme l image de couverture prend tt la page
+-je ne savais pas comment reduire limage en utilisant les codes donc j ai reuduit directement l image avec paint
